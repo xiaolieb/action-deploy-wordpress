@@ -1,0 +1,27 @@
+.github/workflows/deploy.yml file in your GitHub repo, if one doesn't exist already.
+
+Add the following code to the deploy.yml file.
+
+on: push
+
+name: Deploying WordPress Site
+
+jobs:
+
+  deploy:
+
+    name: Deploy
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Deploy
+
+        uses: rtCamp/action-deploy-wordpress@v3
+
+        env:
+
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }
